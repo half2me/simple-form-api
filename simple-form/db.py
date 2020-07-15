@@ -1,6 +1,6 @@
 from datetime import date
-
-from pony.orm import PrimaryKey, Required, Database, Set, Optional, set_sql_debug, desc
+from pony.orm import PrimaryKey, Required, Database, desc
+from .enums import OrderByDirection
 
 db = Database()
 db.bind(provider='sqlite', filename='database.sqlite', create_db=True)

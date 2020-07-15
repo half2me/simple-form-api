@@ -22,3 +22,6 @@ class Person(db.Entity):
     dob = Required(date)
     email = Required(str)
     noc = Required(int)
+
+
+db.generate_mapping(create_tables=True)

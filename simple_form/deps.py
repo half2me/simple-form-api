@@ -8,4 +8,5 @@ def paginator(page: PageNum = 1, size: PageSize = default_page_size):
 
 class Sorter:
     def __init__(self, order_by: OrderByFields = None, dir: OrderByDirection = OrderByDirection.asc):
-        super().__init__(order_by, dir)
+        self.order_by = order_by
+        self.dir = dir

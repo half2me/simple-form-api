@@ -8,10 +8,10 @@ PageSize = conint(gt=0)
 
 
 class PersonBase(BaseModel):
-    name = str
-    dob = date
-    email = EmailStr
-    noc = conint(ge=0)
+    name: str
+    dob: date
+    email: EmailStr
+    noc: conint(ge=0) = 0
 
 
 class Person(PersonBase):

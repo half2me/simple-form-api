@@ -1,6 +1,6 @@
 from typing import List
 
-from fastapi import FastAPI, Depends, HTTPException
+from fastapi import FastAPI, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from pony.orm import db_session
 
@@ -29,6 +29,7 @@ def list_people(pagination: Pagination = Depends(paginator), sort: Sorter = Depe
 @app.post("/", response_model=Person, status_code=201)
 def add_person(person: PersonBase):
     with db_session:
-        if db.Person.exists(email=person.email):
-            raise HTTPException(status_code=400, detail="Duplicate")
+        # Optional duplicate detection
+        #  if db.Person.exists(email=person.email):
+        #    raise HTTPException(status_code=400, detail="Duplicate")
         return db.Person(**person.dict()).to_dict()

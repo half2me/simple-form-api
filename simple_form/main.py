@@ -1,6 +1,7 @@
 from typing import List
 
 from fastapi import FastAPI, Depends, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pony.orm import db_session
 
 from . import db
@@ -8,6 +9,14 @@ from .deps import paginator, Sorter
 from .models import Person, Pagination, PersonBase
 
 app = FastAPI()
+
+# CORS middleware for easy testing
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=['*'],
+    allow_methods=['*'],
+    allow_headers=['*'],
+)
 
 
 @app.get("/", response_model=List[Person])

@@ -1,5 +1,7 @@
 from datetime import date
+
 from pony.orm import PrimaryKey, Required, Database, desc
+
 from .enums import OrderByDirection
 
 db = Database()
